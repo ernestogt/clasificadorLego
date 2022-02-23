@@ -12,7 +12,7 @@ namespace ClasificadorLego
     {
         static void Main(string[] args)
         {
-            string imagePath = @"C:\Users\ernes\Documents\vs-code\Data2\test\Brick_2x2\images229.jpg";
+            string imagePath = @"C:\Users\ernes\Documents\Visual Studio 2019\Projects\ClasificadorLego\ClasificadorLego\images73.jpg";
             string modelPath = @"C:\Users\ernes\Documents\Visual Studio 2019\Projects\ClasificadorLego\ClasificadorLego\model7.h5";
             string name = "";
             int[] coordenadas = ObtenerCentro.CalcularCentro(imagePath);
@@ -59,6 +59,7 @@ namespace ClasificadorLego
                 Console.WriteLine("La caracteristica del lego es: "+resultado[2]);
 
             }
+            Console.ReadLine();
 
         }
         private static int DiferenciaColor(Color c1, Color c2)

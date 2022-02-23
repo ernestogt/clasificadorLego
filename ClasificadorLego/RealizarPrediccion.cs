@@ -28,7 +28,7 @@ namespace ClasificadorLego
 
 
             String[] labels = {"lego_1x1","lego_1x1_Circular","lego_1x2", "lego_1x2_Pendiente", "lego_1x3", "lego_2x2", "lego_2x2_L","lego_2x2_Pendiente",
-            "lego_2x3", "lego2x3_Plato","lego2x3_Pendiente", "lego_2x4", "lego2x4_Plato","lego2x4_Pendiente"};
+            "lego_2x3", "lego_2x3_Plato","lego_2x3_Pendiente", "lego_2x4", "lego2x4_Plato","lego_2x4_Pendiente"};
 
             string aux = labels[(int)np.argmax(preds)];
             return aux;
