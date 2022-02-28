@@ -28,20 +28,30 @@ namespace ClasificadorLego
             char[] aux = { '[', ']' };
             string colorR = a.Split(aux)[1];
 
-            Console.WriteLine("El color resultante de la clasificación del lego es "+colorR);
             var colorLookup = typeof(Color)
                 .GetProperties(BindingFlags.Public | BindingFlags.Static)
                 .Select(f => (Color)f.GetValue(null, null))
                 .Where(c => c.IsNamedColor)
                 .ToLookup(c => c.ToArgb());
 
-            // There are some colours with multiple entries...
+            
             foreach (var namedColor in colorLookup[color.ToArgb()])
             {
                 Console.WriteLine(namedColor.Name);
                 name=namedColor.Name;
             }
-            Console.WriteLine(name);
+            if (name!="")
+            {
+                Console.WriteLine(name);
+
+            }
+            else
+            {
+
+                
+                Console.WriteLine("El color resultante de la clasificación del lego es "+colorR);
+            }
+
             Console.WriteLine(GetColorName(color));
 
 
@@ -95,14 +105,6 @@ namespace ClasificadorLego
             var colors = colores.Select(x => new { Value = x, Diff = DiferenciaColor(x, colorBase) }).ToList();
             var min = colors.Min(x => x.Diff);
             return colors.Find(x => x.Diff == min).Value;
-        }
-        private static String GetColorName(Color color)
-        {
-            var predefined = typeof(Color).GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var match = (from p in predefined where ((Color)p.GetValue(null, null)).ToArgb() == color.ToArgb() select (Color)p.GetValue(null, null));
-            if (match.Any())
-                return match.First().Name;
-            return String.Empty;
         }
 
     }
